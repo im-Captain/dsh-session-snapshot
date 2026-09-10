@@ -8,9 +8,9 @@
 
 | 阶段 | 插件 | 职责 |
 |---|---|---|
-| 预防 | [dsh-session-guard](https://github.com/im-Captain/dsh-session-guard) | 阻止两个 dsh 进程写坏同一会话 |
+| 预防 | [dsh-session-guard](https://github.com/po-et/dsh-session-guard) | 阻止两个 dsh 进程写坏同一会话 |
 | **快照** | **dsh-session-snapshot**（本项目） | **在每个回合边界留一份校验过的好副本** |
-| 修复 | [dsh-session-rescue](https://github.com/im-Captain/dsh-session-rescue) | 修复或抢救已经损坏的日志 |
+| 修复 | [dsh-session-rescue](https://github.com/po-et/dsh-session-rescue) | 修复或抢救已经损坏的日志 |
 
 ## 为什么需要它
 
@@ -21,7 +21,7 @@
 > 暂未发布到 npm，请直接从 GitHub 安装。pnpm 会要求你放行一次这个包的构建脚本（dsh 会打印要加的那一行），那是 `prepare` 在编译 TypeScript。
 
 ```sh
-dsh plugin --profile web add github:im-Captain/dsh-session-snapshot
+dsh plugin --profile web add github:po-et/dsh-session-snapshot
 ```
 
 装完即自动在回合边界打快照。在用 AI agent？直接说：**"装上 dsh-session-snapshot 插件。"**
@@ -31,10 +31,10 @@ dsh plugin --profile web add github:im-Captain/dsh-session-snapshot
 CLI 在 dsh 自身启动不了时照样能用：
 
 ```sh
-npx github:im-Captain/dsh-session-snapshot                 # 列出所有会话的快照与实时健康状态
-npx github:im-Captain/dsh-session-snapshot list 37374e34   # 查看单个会话的快照（id 片段）
-npx github:im-Captain/dsh-session-snapshot restore 37374e34   # 恢复最新的、校验通过的快照
-npx github:im-Captain/dsh-session-snapshot snapshot 37374e34  # 立即打一份快照
+npx github:po-et/dsh-session-snapshot                 # 列出所有会话的快照与实时健康状态
+npx github:po-et/dsh-session-snapshot list 37374e34   # 查看单个会话的快照（id 片段）
+npx github:po-et/dsh-session-snapshot restore 37374e34   # 恢复最新的、校验通过的快照
+npx github:po-et/dsh-session-snapshot snapshot 37374e34  # 立即打一份快照
 ```
 
 `restore` 总是先把当前文件保留为 `<文件>.pre-restore-<时间>`，并拒绝任何自身校验不通过的快照。用 `--at <epoch>`（在 `list` 中显示）可恢复指定快照而非最新的。

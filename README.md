@@ -8,9 +8,9 @@ Part of a three-piece session-integrity suite:
 
 | Stage | Plugin | Role |
 |---|---|---|
-| Prevent | [dsh-session-guard](https://github.com/im-Captain/dsh-session-guard) | stop two dsh processes from corrupting one session |
+| Prevent | [dsh-session-guard](https://github.com/po-et/dsh-session-guard) | stop two dsh processes from corrupting one session |
 | **Snapshot** | **dsh-session-snapshot** (this) | **keep a verified good copy at every turn boundary** |
-| Repair | [dsh-session-rescue](https://github.com/im-Captain/dsh-session-rescue) | fix or salvage a log that already broke |
+| Repair | [dsh-session-rescue](https://github.com/po-et/dsh-session-rescue) | fix or salvage a log that already broke |
 
 ## Why it exists
 
@@ -21,7 +21,7 @@ Part of a three-piece session-integrity suite:
 > Not on npm yet, so install straight from GitHub. pnpm will ask you to allow this package's build script once (dsh prints the exact line to add); that's the `prepare` step compiling TypeScript.
 
 ```sh
-dsh plugin --profile web add github:im-Captain/dsh-session-snapshot
+dsh plugin --profile web add github:po-et/dsh-session-snapshot
 ```
 
 That's it — the plugin snapshots automatically at turn boundaries. Using an AI agent? Tell it: *"Install the dsh-session-snapshot plugin."*
@@ -31,10 +31,10 @@ That's it — the plugin snapshots automatically at turn boundaries. Using an AI
 The CLI works even when dsh itself won't boot:
 
 ```sh
-npx github:im-Captain/dsh-session-snapshot                 # list snapshots + live health for every session
-npx github:im-Captain/dsh-session-snapshot list 37374e34   # snapshots for one session (id fragment)
-npx github:im-Captain/dsh-session-snapshot restore 37374e34   # restore the newest verified snapshot
-npx github:im-Captain/dsh-session-snapshot snapshot 37374e34  # take one right now
+npx github:po-et/dsh-session-snapshot                 # list snapshots + live health for every session
+npx github:po-et/dsh-session-snapshot list 37374e34   # snapshots for one session (id fragment)
+npx github:po-et/dsh-session-snapshot restore 37374e34   # restore the newest verified snapshot
+npx github:po-et/dsh-session-snapshot snapshot 37374e34  # take one right now
 ```
 
 `restore` always preserves the current file as `<artifact>.pre-restore-<time>` first, and refuses any snapshot that does not itself verify as loadable. Use `--at <epoch>` (shown in `list`) to restore a specific snapshot instead of the newest.
