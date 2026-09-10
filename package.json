@@ -16,9 +16,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/po-et/dsh-session-snapshot.git"
+    "url": "git+https://github.com/im-Captain/dsh-session-snapshot.git"
   },
-  "homepage": "https://github.com/po-et/dsh-session-snapshot#readme",
+  "homepage": "https://github.com/im-Captain/dsh-session-snapshot#readme",
   "engines": {
     "node": ">=22.15",
     "dsh": ">=0.1.0-rc.6"
